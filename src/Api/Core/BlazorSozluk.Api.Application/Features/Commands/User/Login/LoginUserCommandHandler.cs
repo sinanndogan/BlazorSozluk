@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.User;
+namespace BlazorSozluk.Api.Application.Features.Commands.User.Login;
 
 //burada bu iki parametreyi alacak requesthandler  usercommand alıp viewmodel dönecek demiş oluyoruz burda 
 public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
@@ -51,12 +51,12 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
 
         //Sisteme kulanıcı kayıt olmuş olabilir ama Email Confirm edilmişmi onaylama işlemi yapılmıssa devam edebilsin
 
-        if(!dbUser.EmailConfirmed)
+        if (!dbUser.EmailConfirmed)
         {
             throw new DatabaseValidationException("Email address is not confirmed yet!");
         }
 
-        var result =mapper.Map<LoginUserViewModel>(dbUser);
+        var result = mapper.Map<LoginUserViewModel>(dbUser);
 
         var claims = new Claim[]
         {
@@ -77,7 +77,7 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, LoginUs
     {
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["AuthConfig:Secret"]));
 
-        var creds=new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var expiry = DateTime.Now.AddDays(10);
 
