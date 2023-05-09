@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using BlazorSozluk.Common.Infrastructure;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,13 @@ namespace BlazorSozluk.Common.Models.RequestModels
         public string EmailAddress { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+
+
+        //Password hash
+        public CreateUserCommand(string emailAddress, string password)
+        {
+            EmailAddress = emailAddress;
+            Password=PasswordEncryptor.Encrpt(password);
+        }
     }
 }

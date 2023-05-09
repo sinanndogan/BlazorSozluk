@@ -8,7 +8,7 @@ namespace BlazorSozluk.Common
 {
     public class SozlukConstants
     {
-        public const string RabbitMQHost = "localhost";
+        public const string RabbitMQHost = "amqps://vgoeohfm:NmkSmsxycy31BqcSuJ7Me8qFIdR0E6Y_@shrimp.rmq.cloudamqp.com/vgoeohfm";
         public const string DefaultExchangeType = "direct";
 
 
@@ -19,5 +19,8 @@ namespace BlazorSozluk.Common
 
 
 
-    }
-}
+
+        public const string FavExchangeName = "FavExchange";
+
+        public const string CreateEntryCommentFavQueueName = "CreateEntryCommentFavQueue";
+}  }

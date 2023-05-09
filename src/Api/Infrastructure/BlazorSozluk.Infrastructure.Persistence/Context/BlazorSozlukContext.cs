@@ -45,7 +45,7 @@ namespace BlazorSozluk.Infrastructure.Persistence.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connStr = "Server=localhost;Database=BlazorSozlukDB;User Id=sa;Password=123;";
+                var connStr = "Server=DESKTOP-88658IP;Database=BlazorSozlukDB;User Id=sa;Password=123;";
                 optionsBuilder.UseSqlServer(connStr, opt =>
                 {
                     opt.EnableRetryOnFailure();

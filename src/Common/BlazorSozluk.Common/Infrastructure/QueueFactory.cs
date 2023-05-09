@@ -1,11 +1,7 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace BlazorSozluk.Common.Infrastructure
 {
@@ -26,11 +22,15 @@ namespace BlazorSozluk.Common.Infrastructure
 
         public static EventingBasicConsumer CreateBasicConsumer()
         {
-            var factory = new ConnectionFactory() { HostName = SozlukConstants.RabbitMQHost };
+            var factory = new ConnectionFactory()
+            {
+                Uri = new Uri(SozlukConstants.RabbitMQHost)
+            };
             var connection = factory.CreateConnection();
-            var channgel = connection.CreateModel();
+            
+            var channael = connection.CreateModel();
 
-            return new EventingBasicConsumer(channgel);
+            return new EventingBasicConsumer(channael);
         }
 
 

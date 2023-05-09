@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BlazorSozluk.Api.Application.Interfaces.Repositories;
+using BlazorSozluk.Api.Domain.Models;
 using BlazorSozluk.Common;
 using BlazorSozluk.Common.Events.User;
 using BlazorSozluk.Common.Infrastructure;
@@ -23,6 +24,7 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.Create
         {
             this.userRepository = userRepository;
             this.mapper = mapper;
+            
         }
 
         public async Task<Guid> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -38,8 +40,12 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.Create
 
             //Eğer kullanıcı kontrol sonrasında çıkmazsa yapılan işlem mapper'a diyoruz ki bana bir kullanıcı yarat ve bunu request objesinden al dönüştür
 
-            var dbUser = mapper.Map<BlazorSozluk.Api.Domain.Models.User>(request);
+            var dbUser = mapper.Map<Domain.Models.User>(request);
 
+            
+            
+                
+            
 
             // bu kayıt veritabanına başarı ile kayıt edilip edilmediğini dönüyor 
             var rows = await userRepository.AddAsync(dbUser);
