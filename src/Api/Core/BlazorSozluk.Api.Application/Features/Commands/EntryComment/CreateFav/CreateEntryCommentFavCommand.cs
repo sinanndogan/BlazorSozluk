@@ -13,7 +13,7 @@ namespace BlazorSozluk.Api.Application.Features.Commands.EntryComment.CreateFav
         public Guid EntryCommentId { get; set; }
 
 
-        //hangi kullanıcı fav a ekliyor
+        //hangi kullanıcı fav a ekliyor kullanıcıyı belirtmek için 
         public Guid UserId { get; set; }
 
         public CreateEntryCommentFavCommand(Guid entryCommentId, Guid userId)

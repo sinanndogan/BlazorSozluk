@@ -22,6 +22,9 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.ChangePassword
 
         public async Task<bool> Handle(ChangeUserPasswordCommand request, CancellationToken cancellationToken)
         {
+            //kullanıcıyı çekiyor daha sonrasında eski şifre kontrolü yapılıyor
+
+            // userId var mı yok mu diye bakıyoruz 
             if (!request.UserId.HasValue)
             {
                 throw new ArgumentNullException(nameof(request.UserId));
@@ -29,12 +32,14 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.ChangePassword
 
             var dbUser = await userRepository.GetByIdAsync(request.UserId.Value);
 
-
+            //eğer kullanıcı bulunamadı kayıt bulunamadı diye dönüyorsa
             if (dbUser == null)
             {
                 throw new DatabaseValidationException("User not found!");
             }
 
+
+            //eski password kontrolü yapılıyor
             var encpPass = PasswordEncryptor.Encrpt(request.OldPassword);
             if(dbUser.Password != encpPass)
             {
@@ -42,7 +47,7 @@ namespace BlazorSozluk.Api.Application.Features.Commands.User.ChangePassword
             }    
 
             dbUser.Password = encpPass;
-
+            
             await userRepository.UpdateAsync(dbUser);
 
             return true;
