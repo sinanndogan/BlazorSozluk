@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.EntryComment.DeleteFav
+namespace BlazorSozluk.Api.Application.Features.Commands.Entry.DeleteFav
 {
     public class DeleteEntryFavCommandHandler : IRequestHandler<DeleteEntryFavCommand, bool>
     {
@@ -18,7 +18,7 @@ namespace BlazorSozluk.Api.Application.Features.Commands.EntryComment.DeleteFav
                 queueName: SozlukConstants.DeleteEntryFavQueueName, obj: new DeleteEntryFavEvent()
                 {
                     EntryId = request.EntryId,
-                    CreatedBy =request.UserId
+                    CreatedBy = request.UserId
                 });
             return Task.FromResult(true);
         }

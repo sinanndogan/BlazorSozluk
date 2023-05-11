@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlazorSozluk.Api.Application.Features.Commands.EntryComment.DeleteFav
+namespace BlazorSozluk.Api.Application.Features.Commands.Entry.DeleteFav
 {
-    public class DeleteEntryFavCommand:IRequest<bool>
+    public class DeleteEntryFavCommand : IRequest<bool>
     {
         public Guid EntryId { get; set; }
 
