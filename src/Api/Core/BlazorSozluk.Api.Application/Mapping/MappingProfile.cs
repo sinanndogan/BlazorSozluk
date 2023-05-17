@@ -23,6 +23,11 @@ namespace BlazorSozluk.Api.Application.Mapping
 
             CreateMap<CreateEntryCommand, Entry>().ReverseMap();
 
+            //Entry içerisinde count olmadıgı için burda hata cıkmaması ıcın bunu yaptık
+            CreateMap<Entry, GetEntriesViewModel>()
+                .ForMember(x=>x.CommentCount, y=>y.MapFrom(z=>z.EntryComments.Count));
+                
+
             CreateMap<CreateEntryCommentCommand,EntryComment>().ReverseMap();
         }
     }

@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using BlazorSozluk.Api.Application.Interfaces.Repositories;
-using BlazorSozluk.Common.Models.Queries;
+﻿using BlazorSozluk.Common.Models.Queries;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,23 +12,8 @@ namespace BlazorSozluk.Api.Application.Features.Queries.GetEntries
     {
         public bool TodaysEntries { get; set; }
 
-        public int Count { get; set; }
+        public int Count { get; set; } = 100;
 
 
     }
-
-
-    //public class GetEntriesQueryHandler : IRequestHandler<GetEntriesQuery, List<GetEntriesViewModel>>
-    //{ 
-    //    private readonly IEntryRepository entryRepository;
-    //    private readonly IMapper mapper;
-
-    //    public GetEntriesQueryHandler(IEntryRepository entryRepository, IMapper mapper)
-    //    {
-    //        this.entryRepository = entryRepository;
-    //        this.mapper = mapper;
-    //    }
-
-       
-    //}
 }

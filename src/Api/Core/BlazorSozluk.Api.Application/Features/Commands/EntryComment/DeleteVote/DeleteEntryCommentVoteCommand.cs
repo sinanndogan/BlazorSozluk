@@ -1,4 +1,5 @@
 ﻿using BlazorSozluk.Common;
+using BlazorSozluk.Common.Events.EntryComment;
 using BlazorSozluk.Common.Infrastructure;
 using MediatR;
 using System;
