@@ -17,5 +17,7 @@ namespace BlazorSozluk.Api.Domain.Models
 
         public virtual Entry Entry { get; set; }
 
+       
+
     }
 }

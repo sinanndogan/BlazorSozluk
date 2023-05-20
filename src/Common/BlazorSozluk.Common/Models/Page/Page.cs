@@ -11,7 +11,7 @@ namespace BlazorSozluk.Common.Models.Page
     {
         public Page():this(0)
         {
-            
+            //Bu ctor hiç veri göndermediğmiz durumlarda çalışacaktır
         }
 
         public Page(int totalRowCount):this(1,10,totalRowCount)
